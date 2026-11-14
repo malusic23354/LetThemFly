@@ -18,13 +18,9 @@ class Configuration(private val plugin: JavaPlugin) {
         private set
     var idleParticle: Particle? = null
         private set
-    var idleParticleCount: Int = 2
-        private set
     var idleIntervalTicks: Long = 10L
         private set
     var activateParticle: Particle? = null
-        private set
-    var activateParticleCount: Int = 20
         private set
     var activateSound: Sound? = null
         private set
@@ -52,10 +48,8 @@ class Configuration(private val plugin: JavaPlugin) {
         padMaterial = Material.matchMaterial(config.getString("pad.material", "SLIME_BLOCK")!!) ?: Material.SLIME_BLOCK
         launchVelocity = config.getDouble("pad.launch-velocity", 1.5)
         idleParticle = registryValue(Registry.PARTICLE_TYPE, "pad.idle-particle.particle")
-        idleParticleCount = config.getInt("pad.idle-particle.count", 2)
         idleIntervalTicks = config.getLong("pad.idle-particle.interval-ticks", 10L)
         activateParticle = registryValue(Registry.PARTICLE_TYPE, "pad.activate-particle.particle")
-        activateParticleCount = config.getInt("pad.activate-particle.count", 20)
         activateSound = registryValue(Registry.SOUNDS, "pad.activate-sound.sound")
         soundVolume = config.getDouble("pad.activate-sound.volume", 1.0).toFloat()
         soundPitch = config.getDouble("pad.activate-sound.pitch", 1.0).toFloat()

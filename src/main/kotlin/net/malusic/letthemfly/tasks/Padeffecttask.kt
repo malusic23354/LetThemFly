@@ -1,10 +1,12 @@
 package net.malusic.letthemfly
 
-
-class PadEffectTask(private val configuration: Configuration, private val storage: PadStorage) : Runnable {
+class PadEffectTask(
+    private val configuration: Configuration,
+    private val storage: PadStorage,
+    private val effects: PadEffects
+) : Runnable {
 
     override fun run() {
-        val particle = configuration.idleParticle ?: return
         val stale = mutableListOf<String>()
         for (key in storage.pads.toList()) {
             val block = configuration.blockOf(key) ?: continue
@@ -12,7 +14,7 @@ class PadEffectTask(private val configuration: Configuration, private val storag
                 stale.add(key)
                 continue
             }
-            block.world.spawnParticle(particle, block.location.add(0.5, 1.0, 0.5), configuration.idleParticleCount)
+            effects.idle(block)
         }
         stale.forEach(storage::remove)
     }

@@ -11,8 +11,10 @@ class LTF : JavaPlugin() {
     override fun onEnable() {
         configuration = Configuration(this)
         storage = PadStorage(this)
+        val effects = PadEffects(this, configuration)
         server.pluginManager.registerEvents(PadListener(configuration, storage), this)
-        server.scheduler.runTaskTimer(this, PadEffectTask(configuration, storage), 0L, configuration.idleIntervalTicks)
+        server.scheduler.runTaskTimer(this, PadEffectTask(configuration, storage, effects), 0L, configuration.idleIntervalTicks)
+        server.scheduler.runTaskTimer(this, PadLaunchTask(configuration, storage, effects), 0L, 1L)
         lifecycleManager.registerEventHandler(LifecycleEvents.COMMANDS) { event ->
             event.registrar().register(CommandHandler(configuration).build())
         }
