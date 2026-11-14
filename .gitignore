@@ -6,3 +6,4 @@ run
 .github
 ./dev.gradle.kts
 ./release.init.gradle.kts
+.idea/
