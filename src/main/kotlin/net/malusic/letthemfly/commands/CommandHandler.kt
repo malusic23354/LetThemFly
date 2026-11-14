@@ -16,4 +16,5 @@ class CommandHandler(private val configuration: Configuration) {
             }
         )
         .build()
+    
 }

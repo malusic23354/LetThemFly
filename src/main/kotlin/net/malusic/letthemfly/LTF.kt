@@ -16,7 +16,7 @@ class LTF : JavaPlugin() {
         server.scheduler.runTaskTimer(this, PadEffectTask(configuration, storage, effects), 0L, configuration.idleIntervalTicks)
         server.scheduler.runTaskTimer(this, PadLaunchTask(configuration, storage, effects), 0L, 1L)
         lifecycleManager.registerEventHandler(LifecycleEvents.COMMANDS) { event ->
-            event.registrar().register(CommandHandler(configuration).build())
+            event.registrar().register(CommandHandler(configuration).build(), listOf("ltf"))
         }
         logger.info("LetThemFly ${pluginMeta.version} enabled")
     }
