@@ -1,0 +1,14 @@
+name: LetThemFly
+version: "0.1.0"
+main: net.malusic.letthemfly.LTF
+loader: net.malusic.letthemfly.LTFLoader
+api-version: "1.21.11"
+description: Simple launch pads plugin
+authors: [Malusic]
+permissions:
+  letthemfly.pad.set:
+    default: false
+  letthemfly.pad.remove:
+    default: false
+  letthemfly.pad.use:
+    default: true
