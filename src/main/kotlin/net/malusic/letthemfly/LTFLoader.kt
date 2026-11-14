@@ -1,4 +1,4 @@
-package net.malusic.daclans
+package net.malusic.letthemfly
 
 import io.papermc.paper.plugin.loader.PluginClasspathBuilder
 import io.papermc.paper.plugin.loader.PluginLoader
