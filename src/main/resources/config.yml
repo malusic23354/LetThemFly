@@ -1,0 +1,17 @@
+pad:
+  material: SLIME_BLOCK
+  launch-velocity: 1.5
+  idle-particle:
+    particle: END_ROD
+    count: 2
+    interval-ticks: 10
+  activate-particle:
+    particle: CLOUD
+    count: 20
+  activate-sound:
+    sound: ENTITY_ENDER_DRAGON_FLAP
+    volume: 1.0
+    pitch: 1.0
+messages:
+  no-set-permission: "<red>You don't have permission to set pads."
+  no-remove-permission: "<red>You don't have permission to remove pads."

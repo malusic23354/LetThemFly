@@ -72,10 +72,6 @@ dependencies {
     implementation("org.xerial:sqlite-jdbc:3.49.1.0") {
         exclude(group = "org.slf4j", module = "slf4j-api")
     }
-    implementation("com.mysql:mysql-connector-j:26.7.0") {
-        exclude(group = "com.google.protobuf", module = "protobuf-java")
-        exclude(group = "org.slf4j", module = "slf4j-api")
-    }
 }
 
 tasks {
@@ -152,23 +148,4 @@ kotlin {
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
-}
-
-tasks.register("bumpVersion") {
-    group = "release"
-    description = "Bump the patch version in paper-plugin.yml and README.md."
-    doLast {
-        val pluginYml = file("src/main/resources/paper-plugin.yml")
-        val readme = file("README.md")
-        val pattern = Regex("(?m)^version:\\s*\"?([0-9]+\\.[0-9]+\\.[0-9]+)\"?\\s*$")
-        val current = pattern.find(pluginYml.readText())?.groupValues?.get(1)
-            ?: error("Could not find a version in ${pluginYml.path}")
-        val parts = current.split(".")
-        val next = "${parts[0]}.${parts[1]}.${parts[2].toInt() + 1}"
-        pluginYml.writeText(pluginYml.readText().replaceFirst(pattern, "version: \"$next\""))
-        if (readme.exists()) {
-            readme.writeText(readme.readText().replace("version-$current-", "version-$next-"))
-        }
-        println("Bumped version $current -> $next")
-    }
 }

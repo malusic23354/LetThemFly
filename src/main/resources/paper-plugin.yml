@@ -12,3 +12,5 @@ permissions:
     default: false
   letthemfly.pad.use:
     default: true
+  letthemfly.reload:
+    default: op
